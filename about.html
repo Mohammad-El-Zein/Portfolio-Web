@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="de">
+  <!-- bde usol l kontakt aala l email te3e yeene tusl lmsg emaile 
+   w bs ekbos aal kontakt maam tdwa active mn foee-->
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Persönliche Portfolio-Webseite</title>
+
+    <link rel="stylesheet" href="style1.css" />
+
+    <!--iconref-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        fetch("navbar.html")
+          .then((r) => r.text())
+          .then((html) => {
+            document.getElementsByClassName("header")[0].innerHTML = html;
+
+            // NACH dem Laden der Navigation: Active setzen
+            setActiveNavItem();
+          });
+      });
+
+      function setActiveNavItem() {
+        // Aktuelle Seite ermitteln
+        const currentPage =
+          window.location.pathname.split("/").pop() || "about.html";
+
+        // Alle Navigation-Links finden
+        const navLinks = document.querySelectorAll("nav a"); // Anpassen an deine navbar.html Struktur
+
+        navLinks.forEach((link) => {
+          // Active entfernen
+          link.classList.remove("active");
+
+          // Wenn Link zur aktuellen Seite gehört: Active setzen
+          if (link.getAttribute("href") === "./" + currentPage) {
+            link.classList.add("active");
+          }
+        });
+      }
+    </script>
+  </head>
+
+  <body>
+    <header class="header"></header>
+    <!--übermich design: -->
+    <section class="about" id="about">
+      <h2 class="heading">Über <span> mich</span></h2>
+
+      <!-- ta tsir sura jehze bshil lcomm
+    <div class="about-img">
+      <img src="esm l image"alt="">
+      <span class="circle-spin"></span>    
+     </div>
+
+     w hol lzm zidon bl css
+     .about-img {
+       position: relative;
+       width : 25rem;
+       height: 25rem;
+       border-radius: 50%;
+       display: flex;
+       justify-content: center;
+       align-items: center;
+       }
+
+       .about-img {
+        width : 90%;
+        border-radius: 50%;
+        border: .2rem solid var()
+
+        .aboit-img .circle-spin{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) rotate(0);
+        width: 100%;
+        height:100%;
+        border-radius:50%;
+        border-top:
+        border-bottom
+        border-left
+        border-right
+
+        
+        }
+
+     
+     
+     
+     
+     -->
+
+      <div class="about-content">
+        <h3>Informatik Student</h3>
+        <p>
+          Als engagierter Informatikstudent im 4. Semester an der TU Dortmund
+          verfüge ich über solide theoretische Grundlagen und erste praktische
+          Erfahrungen, die ich durch Projekte und Studienarbeiten erworben habe.
+          Meine schnelle Auffassungsgabe und mein Interesse an innovativen
+          Technologien motivieren mich, stets nach neuen Herausforderungen zu
+          suchen, um mein Wissen in praxisorientierten Umgebungen anzuwenden und
+          weiterzuentwickeln.
+        </p>
+
+        <div class="btn-box btns">
+          <a href="#" class="btn"> Mehr lesen</a>
+        </div>
+      </div>
+    </section>
+
+    <script src="script1.js"></script>
+  </body>
+</html>

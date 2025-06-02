@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="de">
+  <!-- bde usol l kontakt aala l email te3e yeene tusl lmsg emaile 
+   w bs ekbos aal kontakt maam tdwa active mn foee-->
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Persönliche Portfolio-Webseite</title>
+
+    <link rel="stylesheet" href="style1.css" />
+
+    <!--iconref-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        fetch("navbar.html")
+          .then((r) => r.text())
+          .then((html) => {
+            document.getElementsByClassName("header")[0].innerHTML = html;
+
+            // NACH dem Laden der Navigation: Active setzen
+            setActiveNavItem();
+          });
+      });
+
+      function setActiveNavItem() {
+        // Aktuelle Seite ermitteln
+        const currentPage =
+          window.location.pathname.split("/").pop() || "skills.html";
+
+        // Alle Navigation-Links finden
+        const navLinks = document.querySelectorAll("nav a"); // Anpassen an deine navbar.html Struktur
+
+        navLinks.forEach((link) => {
+          // Active entfernen
+          link.classList.remove("active");
+
+          // Wenn Link zur aktuellen Seite gehört: Active setzen
+          if (link.getAttribute("href") === "./" + currentPage) {
+            link.classList.add("active");
+          }
+        });
+      }
+    </script>
+  </head>
+
+  <body>
+    <header class="header"></header>
+
+    <section class="skills" id="Skills">
+      <h2 class="heading">Meine <span> Skills</span></h2>
+
+      <h1 class="title"><span>Programmierung</span> Skills</h1>
+
+      <div class="skills-row">
+        <div class="skills-column">
+          <div class="skills-box">
+            <div class="skills-content">
+              <div class="progress">
+                <h3>HTML<span>70%</span></h3>
+                <div class="bar"><span></span></div>
+              </div>
+
+              <div class="progress">
+                <h3>CSS<span>70%</span></h3>
+                <div class="bar"><span></span></div>
+              </div>
+
+              <div class="progress">
+                <h3>JavaSccript<span>50%</span></h3>
+                <div class="bar"><span></span></div>
+              </div>
+
+              <div class="progress">
+                <h3>Java<span>30%</span></h3>
+                <div class="bar"><span></span></div>
+              </div>
+
+              <div class="progress">
+                <h3>SQL<span>50%</span></h3>
+                <div class="bar"><span></span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="skills-column">
+          <div class="skills-box">
+            <div class="skills-content">
+              <div class="progress">
+                <h3>C<span>70%</span></h3>
+                <div class="bar"><span></span></div>
+              </div>
+
+              <div class="progress">
+                <h3>C++<span>70%</span></h3>
+                <div class="bar"><span></span></div>
+              </div>
+
+              <div class="progress">
+                <h3>Python<span>50%</span></h3>
+                <div class="bar"><span></span></div>
+              </div>
+
+              <div class="progress">
+                <h3>Datenstrukturen<span>70%</span></h3>
+                <div class="bar"><span></span></div>
+              </div>
+
+              <div class="progress">
+                <h3>Algorithmen<span>60%</span></h3>
+                <div class="bar"><span></span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script src="script1.js"></script>
+  </body>
+</html>
