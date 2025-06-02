@@ -1,1 +1,1 @@
-
+Eigenständige Entwicklung einer persönlichen Portfolio-Website mit HTML, CSS und JavaScript. Die Website umfasst fünf Seiten (Startseite, Über mich, Bildung, Skills und Kontakt) und enthält ein eigenes Foto sowie ein ansprechendes, benutzerfreundliches Design. Eine Navigationsleiste sorgt für eine intuitive Benutzerführung. Das Projekt demonstriert Kenntnisse in Frontend-Entwicklung, Webdesign und Usability.
