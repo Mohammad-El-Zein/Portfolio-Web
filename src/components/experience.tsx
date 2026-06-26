@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Briefcase, Building2, ChevronDown, GraduationCap, type LucideIcon } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Reveal } from "@/components/reveal";
@@ -19,6 +19,12 @@ const typeIcon: Record<ExperienceType, LucideIcon> = {
 export function Experience() {
   const { lang } = useLanguage();
   const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const [isTouch, setIsTouch] = useState(false);
+
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- reads a platform API unavailable during SSR
+    setIsTouch(window.matchMedia("(hover: none)").matches);
+  }, []);
 
   return (
     <section id="experience" className="border-b border-border bg-surface-muted/40">
@@ -36,7 +42,15 @@ export function Experience() {
               <Reveal key={item.title.de + item.organization} delay={i * 0.08}>
                 <button
                   type="button"
-                  onClick={() => setOpenIndex(isOpen ? null : i)}
+                  onClick={() => {
+                    if (isTouch) setOpenIndex(isOpen ? null : i);
+                  }}
+                  onMouseEnter={() => {
+                    if (!isTouch) setOpenIndex(i);
+                  }}
+                  onMouseLeave={() => {
+                    if (!isTouch) setOpenIndex(null);
+                  }}
                   aria-expanded={isOpen}
                   className="group relative block w-full rounded-xl border border-l-4 border-border bg-surface p-5 text-left transition-all duration-300 ease-out hover:-translate-y-1.5 hover:border-l-accent hover:shadow-[0_16px_40px_-18px_var(--accent-soft)]"
                 >
@@ -63,7 +77,9 @@ export function Experience() {
                       size={14}
                       className={`transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`}
                     />
-                    {translations.experience.expandHint[lang]}
+                    {isTouch
+                      ? translations.experience.expandHint[lang]
+                      : translations.experience.hoverHint[lang]}
                   </div>
 
                   <AnimatePresence initial={false}>

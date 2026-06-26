@@ -1,6 +1,8 @@
 "use client";
 
 import { GraduationCap, Award } from "lucide-react";
+import { useState } from "react";
+import { AboutStoryModal } from "@/components/about-story-modal";
 import { Reveal } from "@/components/reveal";
 import { SectionHeading } from "@/components/section-heading";
 import { certifications, education, languages } from "@/data/content";
@@ -10,6 +12,7 @@ import { useLanguage } from "@/lib/language-context";
 export function About() {
   const { lang } = useLanguage();
   const t = translations.about;
+  const [storyOpen, setStoryOpen] = useState(false);
 
   return (
     <section id="about" className="border-b border-border">
@@ -26,6 +29,13 @@ export function About() {
             <p className="mt-4 text-balance leading-relaxed text-muted-foreground">
               {t.paragraph2[lang]}
             </p>
+            <button
+              type="button"
+              onClick={() => setStoryOpen(true)}
+              className="mt-5 inline-flex items-center gap-1.5 rounded-full border border-border px-4 py-2 text-sm font-medium text-foreground transition-colors hover:border-accent hover:text-accent"
+            >
+              {t.readMore[lang]}
+            </button>
           </Reveal>
 
           <Reveal delay={0.1}>
@@ -69,6 +79,8 @@ export function About() {
           </Reveal>
         </div>
       </div>
+
+      <AboutStoryModal open={storyOpen} onClose={() => setStoryOpen(false)} />
     </section>
   );
 }
