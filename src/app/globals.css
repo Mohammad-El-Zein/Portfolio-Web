@@ -1,27 +1,27 @@
 @import "tailwindcss";
 
 :root {
-  --background: #f8fafc;
-  --foreground: #0f172a;
+  --background: #faf8f4;
+  --foreground: #1c1a17;
   --surface: #ffffff;
-  --surface-muted: #f1f5f9;
-  --border: #e2e8f0;
-  --accent: #0d9488;
-  --accent-soft: #ccfbf1;
-  --accent-2: #6366f1;
-  --muted-foreground: #475569;
+  --surface-muted: #f3efe8;
+  --border: #e7e1d7;
+  --accent: #a16207;
+  --accent-soft: #fbf0d9;
+  --accent-2: #c2410c;
+  --muted-foreground: #5f5a52;
 }
 
 .dark {
-  --background: #050510;
-  --foreground: #e6edf3;
-  --surface: rgba(15, 18, 32, 0.6);
-  --surface-muted: rgba(15, 18, 32, 0.35);
-  --border: #1c2440;
-  --accent: #2dd4bf;
-  --accent-soft: rgba(45, 212, 191, 0.12);
-  --accent-2: #818cf8;
-  --muted-foreground: #8b9bb4;
+  --background: #0c0b0a;
+  --foreground: #f2efe9;
+  --surface: rgba(28, 26, 23, 0.72);
+  --surface-muted: rgba(28, 26, 23, 0.4);
+  --border: #2a2723;
+  --accent: #e8b04b;
+  --accent-soft: rgba(232, 176, 75, 0.12);
+  --accent-2: #d9774a;
+  --muted-foreground: #a39e94;
 }
 
 @theme inline {
@@ -125,11 +125,11 @@ body {
 }
 
 .dark .mesh-blob {
-  opacity: 0.55;
+  opacity: 0.22;
 }
 
 :not(.dark) .mesh-blob {
-  opacity: 0.18;
+  opacity: 0.12;
 }
 
 .mesh-blob-1 {
@@ -155,7 +155,7 @@ body {
   left: 20%;
   width: 40vw;
   height: 40vw;
-  background: radial-gradient(circle, #a855f7, transparent 70%);
+  background: radial-gradient(circle, var(--accent-2), transparent 70%);
   animation: drift-3 38s ease-in-out infinite;
 }
 
@@ -183,7 +183,7 @@ body {
 }
 
 .dark .bg-particle {
-  opacity: 0.5;
+  opacity: 0.3;
 }
 
 @keyframes particle-float {
@@ -285,5 +285,66 @@ body {
 @media (prefers-reduced-motion: reduce) {
   [style*="float-bubble"] {
     animation: none !important;
+  }
+}
+
+/* ---------- Hero cursor spotlight ---------- */
+
+.hero-spotlight::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  background: radial-gradient(
+    500px circle at var(--spot-x, 50%) var(--spot-y, 50%),
+    var(--accent-soft),
+    transparent 60%
+  );
+}
+
+.hero-spotlight > * {
+  position: relative;
+}
+
+.hero-spotlight:hover::before {
+  opacity: 1;
+}
+
+@media (hover: none) {
+  .hero-spotlight::before {
+    display: none;
+  }
+}
+
+/* ---------- Featured project animated border ---------- */
+
+@property --border-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+.featured-border {
+  background: conic-gradient(
+    from var(--border-angle),
+    var(--border) 0deg,
+    var(--accent) 60deg,
+    var(--accent-2) 120deg,
+    var(--border) 180deg,
+    var(--border) 360deg
+  );
+  animation: border-rotate 6s linear infinite;
+  box-shadow: 0 24px 60px -30px var(--accent-soft);
+}
+
+@keyframes border-rotate {
+  to { --border-angle: 360deg; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .featured-border {
+    animation: none;
   }
 }

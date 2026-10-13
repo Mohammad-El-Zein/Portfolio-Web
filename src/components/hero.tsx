@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { ArrowDown, Github, Linkedin, Mail, MapPin } from "lucide-react";
+import { ArrowDown, FileDown, Github, Linkedin, Mail, MapPin } from "lucide-react";
 import { personal, personalText } from "@/data/content";
 import { translations } from "@/data/translations";
 import { useLanguage } from "@/lib/language-context";
@@ -13,8 +13,19 @@ export function Hero() {
   const { lang } = useLanguage();
   const t = translations.hero;
 
+  // Soft spotlight that follows the cursor; positioned via CSS variables to avoid re-renders.
+  function handleMouseMove(e: React.MouseEvent<HTMLElement>) {
+    const rect = e.currentTarget.getBoundingClientRect();
+    e.currentTarget.style.setProperty("--spot-x", `${e.clientX - rect.left}px`);
+    e.currentTarget.style.setProperty("--spot-y", `${e.clientY - rect.top}px`);
+  }
+
   return (
-    <section id="top" className="relative overflow-hidden border-b border-border">
+    <section
+      id="top"
+      onMouseMove={handleMouseMove}
+      className="hero-spotlight relative overflow-hidden border-b border-border"
+    >
       <div className="mx-auto flex min-h-[88vh] max-w-5xl flex-col-reverse items-center justify-center gap-12 px-6 py-24 md:flex-row md:justify-between">
         <div className="flex max-w-2xl flex-col md:flex-1">
           <motion.p
@@ -85,6 +96,15 @@ export function Hero() {
               {t.viewProjects[lang]}
             </a>
             <a
+              href={personal.resumeUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="flex items-center gap-2 rounded-lg border border-accent/60 px-5 py-2.5 text-sm font-medium text-accent transition-colors hover:bg-accent-soft"
+            >
+              <FileDown size={14} />
+              {t.resume[lang]}
+            </a>
+            <a
               href={`mailto:${personal.email}`}
               className="flex items-center gap-2 rounded-lg border border-border px-5 py-2.5 text-sm font-medium text-foreground transition-colors hover:border-accent hover:text-accent"
             >
@@ -95,19 +115,21 @@ export function Hero() {
               href={personal.github}
               target="_blank"
               rel="noreferrer"
-              className="flex items-center gap-2 rounded-lg border border-border px-5 py-2.5 text-sm font-medium text-foreground transition-colors hover:border-accent hover:text-accent"
+              aria-label="GitHub"
+              title="GitHub"
+              className="flex h-10 w-10 items-center justify-center rounded-lg border border-border text-foreground transition-colors hover:border-accent hover:text-accent"
             >
-              <Github size={14} />
-              GitHub
+              <Github size={16} />
             </a>
             <a
               href={personal.linkedin}
               target="_blank"
               rel="noreferrer"
-              className="flex items-center gap-2 rounded-lg border border-border px-5 py-2.5 text-sm font-medium text-foreground transition-colors hover:border-accent hover:text-accent"
+              aria-label="LinkedIn"
+              title="LinkedIn"
+              className="flex h-10 w-10 items-center justify-center rounded-lg border border-border text-foreground transition-colors hover:border-accent hover:text-accent"
             >
-              <Linkedin size={14} />
-              LinkedIn
+              <Linkedin size={16} />
             </a>
           </motion.div>
 

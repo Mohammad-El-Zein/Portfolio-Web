@@ -18,6 +18,7 @@ export const translations = {
     introJoiner: { de: "und", en: "and" },
     viewProjects: { de: "Projekte ansehen", en: "View Projects" },
     contact: { de: "Kontakt", en: "Contact" },
+    resume: { de: "Lebenslauf", en: "Resume" },
     moreInfo: { de: "Mehr erfahren", en: "Learn more" },
   },
   sectionTitles: {
@@ -128,9 +129,10 @@ export const translations = {
     },
   },
   experience: {
-    expandHint: { de: "Klicken für Details", en: "Click for details" },
-    hoverHint: { de: "Details beim Hovern", en: "Hover for details" },
     location: { de: "Standort", en: "Location" },
+  },
+  projects: {
+    featured: { de: "Hauptprojekt", en: "Featured project" },
   },
   contact: {
     heading: {
