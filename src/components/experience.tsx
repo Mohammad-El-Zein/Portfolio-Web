@@ -1,8 +1,8 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { Briefcase, Building2, ChevronDown, GraduationCap, type LucideIcon } from "lucide-react";
-import { AnimatePresence, motion } from "framer-motion";
+import { useRef } from "react";
+import { Briefcase, Building2, GraduationCap, type LucideIcon } from "lucide-react";
+import { motion, useScroll, useSpring } from "framer-motion";
 import { Reveal } from "@/components/reveal";
 import { SectionHeading } from "@/components/section-heading";
 import { experience, type ExperienceType } from "@/data/content";
@@ -18,13 +18,14 @@ const typeIcon: Record<ExperienceType, LucideIcon> = {
 
 export function Experience() {
   const { lang } = useLanguage();
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
-  const [isTouch, setIsTouch] = useState(false);
+  const timelineRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect -- reads a platform API unavailable during SSR
-    setIsTouch(window.matchMedia("(hover: none)").matches);
-  }, []);
+  // The accent line grows down the timeline as the section scrolls through the viewport.
+  const { scrollYProgress } = useScroll({
+    target: timelineRef,
+    offset: ["start 75%", "end 60%"],
+  });
+  const lineProgress = useSpring(scrollYProgress, { stiffness: 120, damping: 30 });
 
   return (
     <section id="experience" className="border-b border-border bg-surface-muted/40">
@@ -33,28 +34,21 @@ export function Experience() {
           <SectionHeading index="02" title={translations.sectionTitles.experience[lang]} />
         </Reveal>
 
-        <div className="relative space-y-6 border-l border-border pl-8">
+        <div ref={timelineRef} className="relative space-y-6 pl-8">
+          <div className="absolute left-0 top-0 h-full w-px bg-border" aria-hidden />
+          <motion.div
+            className="absolute left-0 top-0 h-full w-px origin-top bg-accent shadow-[0_0_8px_var(--accent)]"
+            style={{ scaleY: lineProgress }}
+            aria-hidden
+          />
+
           {experience.map((item, i) => {
             const Icon = typeIcon[item.type];
-            const isOpen = openIndex === i;
 
             return (
-              <Reveal key={item.title.de + item.organization} delay={i * 0.08}>
-                <button
-                  type="button"
-                  onClick={() => {
-                    if (isTouch) setOpenIndex(isOpen ? null : i);
-                  }}
-                  onMouseEnter={() => {
-                    if (!isTouch) setOpenIndex(i);
-                  }}
-                  onMouseLeave={() => {
-                    if (!isTouch) setOpenIndex(null);
-                  }}
-                  aria-expanded={isOpen}
-                  className="group relative block w-full rounded-xl border border-l-4 border-border bg-surface p-5 text-left transition-all duration-300 ease-out hover:-translate-y-1.5 hover:border-l-accent hover:shadow-[0_16px_40px_-18px_var(--accent-soft)]"
-                >
-                  <span className="absolute -left-[2.95rem] top-6 flex h-6 w-6 items-center justify-center rounded-full border-2 border-accent bg-background text-accent">
+              <Reveal key={item.title.de + item.organization} delay={i * 0.06}>
+                <article className="group relative rounded-xl border border-l-4 border-border bg-surface p-5 transition-all duration-300 ease-out hover:-translate-y-1 hover:border-l-accent hover:shadow-[0_16px_40px_-18px_var(--accent-soft)]">
+                  <span className="absolute -left-[2.95rem] top-6 flex h-6 w-6 items-center justify-center rounded-full border-2 border-accent bg-background text-accent transition-transform duration-300 group-hover:scale-110">
                     <Icon size={12} />
                   </span>
 
@@ -72,51 +66,29 @@ export function Experience() {
                     </p>
                   )}
 
-                  <div className="mt-2 flex items-center gap-1.5 text-xs text-muted-foreground transition-colors group-hover:text-accent">
-                    <ChevronDown
-                      size={14}
-                      className={`transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`}
-                    />
-                    {isTouch
-                      ? translations.experience.expandHint[lang]
-                      : translations.experience.hoverHint[lang]}
-                  </div>
+                  <ul className="mt-3 list-inside list-disc space-y-1.5 text-sm leading-relaxed text-muted-foreground">
+                    {item.bullets[lang].map((bullet) => (
+                      <li key={bullet}>{bullet}</li>
+                    ))}
+                  </ul>
 
-                  <AnimatePresence initial={false}>
-                    {isOpen && (
-                      <motion.div
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: "auto", opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.3, ease: "easeOut" }}
-                        className="overflow-hidden"
-                      >
-                        <ul className="mt-3 list-inside list-disc space-y-1.5 text-sm leading-relaxed text-muted-foreground">
-                          {item.bullets[lang].map((bullet) => (
-                            <li key={bullet}>{bullet}</li>
-                          ))}
-                        </ul>
-
-                        {item.tools && (
-                          <div className="mt-4 flex flex-wrap gap-2">
-                            {item.tools[lang].map((tool) => {
-                              const ToolIcon = toolIcon(tool);
-                              return (
-                                <span
-                                  key={tool}
-                                  className="flex items-center gap-1.5 rounded-full border border-border px-3 py-1 text-xs text-muted-foreground transition-colors group-hover:border-accent group-hover:text-accent"
-                                >
-                                  <ToolIcon size={12} />
-                                  {tool}
-                                </span>
-                              );
-                            })}
-                          </div>
-                        )}
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </button>
+                  {item.tools && (
+                    <div className="mt-4 flex flex-wrap gap-2">
+                      {item.tools[lang].map((tool) => {
+                        const ToolIcon = toolIcon(tool);
+                        return (
+                          <span
+                            key={tool}
+                            className="flex items-center gap-1.5 rounded-full border border-border px-3 py-1 text-xs text-muted-foreground transition-colors group-hover:border-accent group-hover:text-accent"
+                          >
+                            <ToolIcon size={12} />
+                            {tool}
+                          </span>
+                        );
+                      })}
+                    </div>
+                  )}
+                </article>
               </Reveal>
             );
           })}

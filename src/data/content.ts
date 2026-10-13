@@ -63,6 +63,22 @@ export type ExperienceItem = {
 
 export const experience: ExperienceItem[] = [
   {
+    type: "education",
+    title: { de: "Master of Science – Informatik", en: "Master of Science – Computer Science" },
+    organization: "TU Dortmund",
+    period: { de: "Oktober 2026 – heute", en: "October 2026 – present" },
+    bullets: {
+      de: [
+        "Masterstudium nach erfolgreichem Bachelorabschluss",
+        "Parallel Werkstudent bei Wilo SE",
+      ],
+      en: [
+        "Master's program following the successful completion of the bachelor's degree",
+        "Working student at Wilo SE alongside the program",
+      ],
+    },
+  },
+  {
     type: "job",
     title: {
       de: "Werkstudent Software Product Architecture & Platform Management",
@@ -109,22 +125,6 @@ export const experience: ExperienceItem[] = [
   },
   {
     type: "education",
-    title: { de: "Master of Science – Informatik", en: "Master of Science – Computer Science" },
-    organization: "TU Dortmund",
-    period: { de: "Oktober 2026 – heute", en: "October 2026 – present" },
-    bullets: {
-      de: [
-        "Masterstudium nach erfolgreichem Bachelorabschluss",
-        "Parallel Werkstudent bei Wilo SE",
-      ],
-      en: [
-        "Master's program following the successful completion of the bachelor's degree",
-        "Working student at Wilo SE alongside the program",
-      ],
-    },
-  },
-  {
-    type: "education",
     title: { de: "Bachelor of Science – Informatik", en: "Bachelor of Science – Computer Science" },
     organization: "TU Dortmund",
     period: {
@@ -144,12 +144,18 @@ export const experience: ExperienceItem[] = [
   },
   {
     type: "job",
-    title: { de: "Mitarbeiter", en: "Employee" },
+    title: { de: "Aushilfe (Wochenende)", en: "Weekend Part-time Worker" },
     organization: "Deutsche Post AG",
     period: { de: "Juni 2023 – heute", en: "June 2023 – present" },
     bullets: {
-      de: ["Nebenjob zur Studienfinanzierung neben dem Informatikstudium"],
-      en: ["Part-time job to finance studies alongside the computer science degree"],
+      de: [
+        "Seit 2023 Nebenjob zur Finanzierung des Studiums",
+        "Heute als Wochenend-Aushilfe parallel zu Masterstudium und Werkstudentenstelle",
+      ],
+      en: [
+        "Part-time job since 2023 to finance my studies",
+        "Now working weekends alongside my master's program and working student position",
+      ],
     },
   },
   {
@@ -176,6 +182,10 @@ export type Project = {
   stack: string[];
   liveUrl?: string;
   githubUrl?: string;
+  /** Shown as the large highlighted card at the top of the projects section. */
+  featured?: boolean;
+  /** Optional preview screenshot, e.g. `${BASE_PATH}/images/projects/lifedash.png`. */
+  image?: string;
 };
 
 export const projects: Project[] = [
@@ -201,6 +211,7 @@ export const projects: Project[] = [
     },
     stack: ["Python", "FastAPI", "Angular", "TypeScript", "PostgreSQL", "Docker", "Azure", "GitHub Actions", "Anthropic API"],
     liveUrl: "https://lifedash.elzein.dev",
+    featured: true,
     githubUrl: "https://github.com/Mohammad-El-Zein/lifedash",
   },
   {

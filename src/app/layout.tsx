@@ -4,6 +4,8 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { SiteBackground } from "@/components/site-background";
 import { LanguageProvider } from "@/lib/language-context";
+import { MotionProvider } from "@/components/motion-provider";
+import { ScrollProgress } from "@/components/scroll-progress";
 import { personal } from "@/data/content";
 
 const geistSans = Geist({
@@ -42,8 +44,11 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col bg-background text-foreground">
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
           <LanguageProvider>
-            <SiteBackground />
-            {children}
+            <MotionProvider>
+              <ScrollProgress />
+              <SiteBackground />
+              {children}
+            </MotionProvider>
           </LanguageProvider>
         </ThemeProvider>
       </body>

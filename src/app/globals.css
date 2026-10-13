@@ -287,3 +287,64 @@ body {
     animation: none !important;
   }
 }
+
+/* ---------- Hero cursor spotlight ---------- */
+
+.hero-spotlight::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  background: radial-gradient(
+    500px circle at var(--spot-x, 50%) var(--spot-y, 50%),
+    var(--accent-soft),
+    transparent 60%
+  );
+}
+
+.hero-spotlight > * {
+  position: relative;
+}
+
+.hero-spotlight:hover::before {
+  opacity: 1;
+}
+
+@media (hover: none) {
+  .hero-spotlight::before {
+    display: none;
+  }
+}
+
+/* ---------- Featured project animated border ---------- */
+
+@property --border-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+.featured-border {
+  background: conic-gradient(
+    from var(--border-angle),
+    var(--border) 0deg,
+    var(--accent) 60deg,
+    var(--accent-2) 120deg,
+    var(--border) 180deg,
+    var(--border) 360deg
+  );
+  animation: border-rotate 6s linear infinite;
+  box-shadow: 0 24px 60px -30px var(--accent-soft);
+}
+
+@keyframes border-rotate {
+  to { --border-angle: 360deg; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .featured-border {
+    animation: none;
+  }
+}
