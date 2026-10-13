@@ -216,7 +216,7 @@ export const projects: Project[] = [
     githubUrl: "https://github.com/Mohammad-El-Zein/lifedash",
   },
   {
-    title: { de: "Full-Stack Restaurant Website", en: "Full-Stack Restaurant Website" },
+    title: { de: "Flavorhaus – Full-Stack Restaurant Website", en: "Flavorhaus – Full-Stack Restaurant Website" },
     description: {
       de: "Vollständige Restaurant-Webanwendung mit Online-Bestellung, Zahlungsabwicklung und einem KI-gestützten Kalorienrechner.",
       en: "A complete restaurant web application with online ordering, payment processing, and an AI-powered calorie calculator.",
@@ -235,6 +235,7 @@ export const projects: Project[] = [
     },
     stack: ["React", "Spring Boot", "MongoDB", "Stripe", "OpenAI API", "Java", "JavaScript"],
     liveUrl: "https://flavorhaus.elzein.dev",
+    featured: true,
     image: `${BASE_PATH}/images/projects/flavorhaus.webp`,
   },
   {
@@ -255,27 +256,7 @@ export const projects: Project[] = [
     },
     stack: ["Java 21", "Maven"],
     githubUrl: "https://github.com/Mohammad-El-Zein/deployment-analyzer",
-  },
-  {
-    title: { de: "DevOps CI/CD Pipelines", en: "DevOps CI/CD Pipelines" },
-    description: {
-      de: "Node.js-Service, der eine produktionsreife CI/CD-Pipeline mit GitHub Actions demonstriert — von Linting und Tests bis zu Security-Scans und automatisierten Releases.",
-      en: "A Node.js service demonstrating a production-grade CI/CD pipeline with GitHub Actions — from linting and tests to security scans and automated releases.",
-    },
-    highlights: {
-      de: [
-        "Test-Matrix (Node 20/22/24) mit Coverage-Gate (≥ 80 %)",
-        "Security: CodeQL, Trivy-Image-Scan, npm audit und Dependabot",
-        "Multi-Stage Docker-Image, Push nach GHCR und semantische Releases",
-      ],
-      en: [
-        "Test matrix (Node 20/22/24) with a coverage gate (≥ 80%)",
-        "Security: CodeQL, Trivy image scan, npm audit and Dependabot",
-        "Multi-stage Docker image, publishing to GHCR and semantic releases",
-      ],
-    },
-    stack: ["GitHub Actions", "Docker", "Node.js", "CodeQL", "Trivy", "GHCR"],
-    githubUrl: "https://github.com/Mohammad-El-Zein/devops-pipelines",
+    image: `${BASE_PATH}/images/projects/deployment-analyzer.webp`,
   },
   {
     title: { de: "Blokus Brettspiel", en: "Blokus Board Game" },
@@ -289,6 +270,7 @@ export const projects: Project[] = [
     },
     stack: ["Kotlin", "BGW Framework", "JUnit 5"],
     githubUrl: "https://github.com/Mohammad-El-Zein/Blokus-Game",
+    image: `${BASE_PATH}/images/projects/blokus.webp`,
   },
   {
     title: { de: "Schiebe-Poker Kartenspiel", en: "Schiebe-Poker Card Game" },
@@ -310,6 +292,7 @@ export const projects: Project[] = [
     },
     stack: ["Kotlin", "Gradle", "BGW Framework", "JUnit 5"],
     githubUrl: "https://github.com/Mohammad-El-Zein/Schiebe-Poker-game",
+    image: `${BASE_PATH}/images/projects/schiebe-poker.webp`,
   },
 ];
 
@@ -337,7 +320,7 @@ export const skills: SkillGroup[] = [
   },
   {
     category: { de: "Cloud", en: "Cloud" },
-    items: ["Azure", "Azure Container Apps", "Bicep (IaC)", "GHCR"],
+    items: ["Azure", "Azure Container Apps", "Bicep (IaC)"],
   },
   {
     category: { de: "KI", en: "AI" },
