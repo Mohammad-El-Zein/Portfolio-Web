@@ -8,8 +8,8 @@ export const translations = {
   },
   hero: {
     introLead: {
-      de: "Informatikstudent an der TU Dortmund mit Fokus auf",
-      en: "Computer science student at TU Dortmund focused on",
+      de: "Informatik-Masterstudent an der TU Dortmund mit Fokus auf",
+      en: "Computer science master's student at TU Dortmund focused on",
     },
     introItems: {
       de: ["Software Engineering", "DevOps", "KI-Systeme"],
@@ -29,12 +29,12 @@ export const translations = {
   },
   about: {
     paragraph1: {
-      de: "Ich bin Informatikstudent im 6. Semester an der TU Dortmund mit praktischer Erfahrung in Softwareentwicklung, DevOps-Automatisierung und KI-gestützten Anwendungen. Aktuell arbeite ich als Werkstudent bei Wilo SE im Bereich Software & Product Architecture und schreibe meine Bachelorarbeit über graphbasierte Algorithmen für Microservice-Deployments.",
-      en: "I'm a computer science student in my 6th semester at TU Dortmund with hands-on experience in software development, DevOps automation, and AI-powered applications. I currently work as a working student at Wilo SE in Software & Product Architecture and am writing my bachelor's thesis on graph-based algorithms for microservice deployments.",
+      de: "Ich habe meinen Bachelor in Informatik an der TU Dortmund in Regelstudienzeit abgeschlossen und studiere dort jetzt im Master. Parallel arbeite ich als Werkstudent bei Wilo SE im Bereich Software Product Architecture & Platform Management. Meine Bachelorarbeit habe ich über graphbasierte Algorithmen für Microservice-Deployments geschrieben.",
+      en: "I completed my bachelor's degree in computer science at TU Dortmund within the standard program duration and am now pursuing my master's there. Alongside my studies, I work as a working student at Wilo SE in Software Product Architecture & Platform Management. My bachelor's thesis focused on graph-based algorithms for microservice deployments.",
     },
     paragraph2: {
-      de: "Ich suche eine Vollzeitstelle als Junior Software Engineer, DevOps oder AI Engineer ab Oktober 2026.",
-      en: "I'm looking for a full-time position as a Junior Software Engineer, DevOps, or AI Engineer starting October 2026.",
+      de: "Ich habe verschiedene Webanwendungen gebaut — von einer produktiv genutzten Restaurant-Plattform bis zu LifeDash, einem in der Azure Cloud deployten Life Dashboard mit FastAPI, Angular und KI-Features. Ich suche eine Vollzeitstelle als Software Engineer, DevOps oder AI Engineer.",
+      en: "I've built a variety of web applications — from a restaurant platform used in production to LifeDash, a personal life dashboard deployed on Azure with FastAPI, Angular and AI features. I'm looking for a full-time position as a Software Engineer, DevOps, or AI Engineer.",
     },
     educationHeading: { de: "Ausbildung", en: "Education" },
     certificationsHeading: { de: "Zertifizierungen", en: "Certifications" },
@@ -76,14 +76,16 @@ export const translations = {
           {
             heading: "Wilo SE: Echte Verantwortung in einem globalen Unternehmen",
             paragraphs: [
-              "Seit März 2026 arbeite ich als Werkstudent bei Wilo SE im Bereich Software & Product Architecture. Von meinem ersten Monat an habe ich echte, unternehmensweite Verantwortung übernommen. Ich entwickle JavaScript-Skripte für das Siemens Polarion ALM-System — ein komplexes Tool, das von hunderten von Ingenieuren täglich genutzt wird. Polarion arbeitet intern mit Lucene, Velocity und SQL. Ich entwickle Automatisierungslösungen, die repetitive Prozesse vereinfachen — direkt für alle Nutzer im Unternehmen.",
+              "Seit März 2026 arbeite ich als Werkstudent bei Wilo SE im Bereich Software Product Architecture & Platform Management. Von meinem ersten Monat an habe ich echte, unternehmensweite Verantwortung übernommen. Ich entwickle JavaScript-Skripte für das Siemens Polarion ALM-System — ein komplexes Tool, das von hunderten von Ingenieuren täglich genutzt wird. Polarion arbeitet intern mit Lucene, Velocity und SQL. Ich entwickle Automatisierungslösungen, die repetitive Prozesse vereinfachen — direkt für alle Nutzer im Unternehmen.",
               "Meine Kollegen kommen aktiv auf mich zu, beschreiben ihre Anforderungen, und ich entwickle dafür Lösungen, die danach produktiv im gesamten System laufen. Zusätzlich integriere ich KI-Lösungen in bestehende Prozesse und entwickle interaktive Dashboards mit REST-API-Anbindungen. Unser Team ist vollständig international — wir arbeiten täglich mit Kollegen aus Amerika, Europa, dem Nahen Osten und China.",
             ],
           },
           {
-            heading: "Zertifizierung und der Blick nach vorne",
+            heading: "Bachelor, LifeDash und der nächste Schritt",
             paragraphs: [
-              "Ich habe die Microsoft Azure AZ-900 Zertifizierung erfolgreich abgeschlossen und bereite mich auf die AZ-104 Administrator-Zertifizierung vor. Im September 2026 schließe ich mein Bachelorstudium ab — mit einer Abschlussarbeit über graphbasierte Algorithmen in Microservice-Architekturen. Ab Oktober 2026 bin ich bereit für den nächsten Schritt als Vollzeit Software Engineer, DevOps Engineer oder AI Engineer.",
+              "Im September 2026 habe ich mein Bachelorstudium in Regelstudienzeit abgeschlossen — mit einer Abschlussarbeit über graphbasierte Algorithmen zur Bestimmung von Deployment-Reihenfolgen in Microservice-Architekturen. Seit Oktober 2026 studiere ich im Master Informatik an der TU Dortmund.",
+              "Parallel habe ich weiter gebaut und gelernt: LifeDash ist mein bisher größtes eigenes Projekt — ein persönliches Life Dashboard mit FastAPI, PostgreSQL und Angular, KI-Features über die Anthropic API und einer vollständigen CI/CD-Pipeline mit GitHub Actions, Docker und Azure Container Apps. Dazu kommen DevOps-Projekte mit Security-Scans, automatisierten Releases und Infrastructure as Code.",
+              "Ich habe die Microsoft Azure AZ-900 Zertifizierung abgeschlossen und bereite mich auf die AZ-104 vor. Jetzt bin ich bereit für den nächsten Schritt als Vollzeit Software Engineer, DevOps Engineer oder AI Engineer.",
             ],
           },
         ],
@@ -105,14 +107,16 @@ export const translations = {
           {
             heading: "Wilo SE: Real Responsibility in a Global Company",
             paragraphs: [
-              "Since March 2026, I've been working as a working student at Wilo SE in Software & Product Architecture. From my very first month, I took on real, company-wide responsibility. I develop JavaScript scripts for the Siemens Polarion ALM system — used daily by hundreds of engineers — working with Lucene, Velocity, and SQL internally. I build automation solutions deployed directly across the entire company.",
+              "Since March 2026, I've been working as a working student at Wilo SE in Software Product Architecture & Platform Management. From my very first month, I took on real, company-wide responsibility. I develop JavaScript scripts for the Siemens Polarion ALM system — used daily by hundreds of engineers — working with Lucene, Velocity, and SQL internally. I build automation solutions deployed directly across the entire company.",
               "Colleagues come to me directly with their requirements, and I build solutions that run live in production. I also integrate AI solutions into existing workflows and build interactive dashboards with REST API connections. Our team is fully international — working daily with colleagues from the Americas, Europe, the Middle East, and China.",
             ],
           },
           {
-            heading: "Certification and Looking Ahead",
+            heading: "Bachelor's Degree, LifeDash and the Next Step",
             paragraphs: [
-              "I've completed the Microsoft Azure AZ-900 certification and am currently preparing for the AZ-104 Administrator certification. In September 2026, I'll complete my Bachelor's degree with a thesis on graph-based algorithms for microservice deployment ordering. From October 2026, I'm ready for a full-time position as a Software Engineer, DevOps Engineer, or AI Engineer.",
+              "In September 2026, I completed my Bachelor's degree within the standard program duration, with a thesis on graph-based algorithms for determining deployment order in microservice architectures. Since October 2026, I've been pursuing my Master's in Computer Science at TU Dortmund.",
+              "Along the way I kept building and learning: LifeDash is my biggest self-driven project so far — a personal life dashboard with FastAPI, PostgreSQL and Angular, AI features powered by the Anthropic API, and a complete CI/CD pipeline with GitHub Actions, Docker and Azure Container Apps. On top of that come DevOps projects with security scanning, automated releases and infrastructure as code.",
+              "I've completed the Microsoft Azure AZ-900 certification and am preparing for the AZ-104. Now I'm ready for the next step as a full-time Software Engineer, DevOps Engineer, or AI Engineer.",
             ],
           },
         ],
