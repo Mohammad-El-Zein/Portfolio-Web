@@ -16,29 +16,38 @@ export const personalText: {
   location: Localized<string>;
 } = {
   availability: {
-    de: "Verfügbar für Vollzeitstelle ab Oktober 2026",
-    en: "Available for full-time position from October 2026",
+    de: "Offen für eine Vollzeitstelle",
+    en: "Open to a full-time position",
   },
   location: { de: "Dortmund, Deutschland", en: "Dortmund, Germany" },
 };
 
-export const education: {
+export type EducationItem = {
   degree: Localized<string>;
   school: string;
   detail: Localized<string>;
-  thesis: Localized<string>;
-} = {
-  degree: { de: "B.Sc. Informatik", en: "B.Sc. Computer Science" },
-  school: "TU Dortmund",
-  detail: {
-    de: "6. Semester · Abschluss: September 2026",
-    en: "6th semester · Graduating: September 2026",
-  },
-  thesis: {
-    de: "Entwicklung und Evaluation eines graphbasierten Algorithmus zur automatischen Bestimmung von Deployment-Reihenfolgen in Microservice-Architekturen",
-    en: "Development and evaluation of a graph-based algorithm for automatically determining deployment order in microservice architectures",
-  },
+  thesis?: Localized<string>;
 };
+
+export const education: EducationItem[] = [
+  {
+    degree: { de: "M.Sc. Informatik", en: "M.Sc. Computer Science" },
+    school: "TU Dortmund",
+    detail: { de: "Seit Oktober 2026", en: "Since October 2026" },
+  },
+  {
+    degree: { de: "B.Sc. Informatik", en: "B.Sc. Computer Science" },
+    school: "TU Dortmund",
+    detail: {
+      de: "Oktober 2023 – September 2026 · Abschluss in Regelstudienzeit",
+      en: "October 2023 – September 2026 · Completed within standard program duration",
+    },
+    thesis: {
+      de: "Entwicklung und Evaluation eines graphbasierten Algorithmus zur automatischen Bestimmung von Deployment-Reihenfolgen in Microservice-Architekturen",
+      en: "Development and evaluation of a graph-based algorithm for automatically determining deployment order in microservice architectures",
+    },
+  },
+];
 
 export type ExperienceType = "job" | "education" | "internship";
 
@@ -55,7 +64,10 @@ export type ExperienceItem = {
 export const experience: ExperienceItem[] = [
   {
     type: "job",
-    title: { de: "Werkstudent Software & Product Architecture", en: "Working Student, Software & Product Architecture" },
+    title: {
+      de: "Werkstudent Software Product Architecture & Platform Management",
+      en: "Working Student, Software Product Architecture & Platform Management",
+    },
     organization: "Wilo SE",
     period: { de: "März 2026 – heute", en: "March 2026 – present" },
     bullets: {
@@ -97,6 +109,22 @@ export const experience: ExperienceItem[] = [
   },
   {
     type: "education",
+    title: { de: "Master of Science – Informatik", en: "Master of Science – Computer Science" },
+    organization: "TU Dortmund",
+    period: { de: "Oktober 2026 – heute", en: "October 2026 – present" },
+    bullets: {
+      de: [
+        "Masterstudium nach erfolgreichem Bachelorabschluss",
+        "Parallel Werkstudent bei Wilo SE",
+      ],
+      en: [
+        "Master's program following the successful completion of the bachelor's degree",
+        "Working student at Wilo SE alongside the program",
+      ],
+    },
+  },
+  {
+    type: "education",
     title: { de: "Bachelor of Science – Informatik", en: "Bachelor of Science – Computer Science" },
     organization: "TU Dortmund",
     period: {
@@ -109,7 +137,7 @@ export const experience: ExperienceItem[] = [
         "Bachelorarbeit: Entwicklung und Evaluation eines graphbasierten Algorithmus zur automatischen Bestimmung von Deployment-Reihenfolgen in Microservice-Architekturen",
       ],
       en: [
-        "On track to graduate within standard program duration",
+        "Graduated within standard program duration",
         "Bachelor's thesis: development and evaluation of a graph-based algorithm for automatically determining deployment order in microservice architectures",
       ],
     },
@@ -152,6 +180,30 @@ export type Project = {
 
 export const projects: Project[] = [
   {
+    title: { de: "LifeDash – Persönliches Life Dashboard", en: "LifeDash – Personal Life Dashboard" },
+    description: {
+      de: "Full-Stack-Dashboard für Kalender, Finanzen, Fitness, Mahlzeiten, Bewerbungen, Lernziele und Gewohnheiten an einem Ort — API-first gebaut und in der Azure Cloud deployt.",
+      en: "A full-stack dashboard for calendar, finances, fitness, meals, job applications, learning goals and habits in one place — built API-first and deployed to the Azure cloud.",
+    },
+    highlights: {
+      de: [
+        "FastAPI-Backend mit PostgreSQL, Alembic-Migrationen und JWT-Authentifizierung",
+        "Angular-Frontend (Standalone Components, Signals) mit Tailwind CSS",
+        "KI-Features mit der Anthropic API: Quick Capture per Sprache/Text und tägliche Life Insights",
+        "CI/CD mit GitHub Actions, Docker und Azure Container Apps (Infrastructure as Code mit Bicep)",
+      ],
+      en: [
+        "FastAPI backend with PostgreSQL, Alembic migrations and JWT authentication",
+        "Angular frontend (standalone components, signals) with Tailwind CSS",
+        "AI features with the Anthropic API: voice/text quick capture and daily life insights",
+        "CI/CD with GitHub Actions, Docker and Azure Container Apps (infrastructure as code with Bicep)",
+      ],
+    },
+    stack: ["Python", "FastAPI", "Angular", "TypeScript", "PostgreSQL", "Docker", "Azure", "GitHub Actions", "Anthropic API"],
+    liveUrl: "https://lifedash.elzein.dev",
+    githubUrl: "https://github.com/Mohammad-El-Zein/lifedash",
+  },
+  {
     title: { de: "Full-Stack Restaurant Website", en: "Full-Stack Restaurant Website" },
     description: {
       de: "Vollständige Restaurant-Webanwendung mit Online-Bestellung, Zahlungsabwicklung und einem KI-gestützten Kalorienrechner.",
@@ -170,7 +222,7 @@ export const projects: Project[] = [
       ],
     },
     stack: ["React", "Spring Boot", "MongoDB", "Stripe", "OpenAI API", "Java", "JavaScript"],
-    liveUrl: "https://mohammadzein-flavorhaus.netlify.app/",
+    liveUrl: "https://flavorhaus.elzein.dev",
   },
   {
     title: { de: "Deployment Analyzer", en: "Deployment Analyzer" },
@@ -190,6 +242,27 @@ export const projects: Project[] = [
     },
     stack: ["Java 21", "Maven"],
     githubUrl: "https://github.com/Mohammad-El-Zein/deployment-analyzer",
+  },
+  {
+    title: { de: "DevOps CI/CD Pipelines", en: "DevOps CI/CD Pipelines" },
+    description: {
+      de: "Node.js-Service, der eine produktionsreife CI/CD-Pipeline mit GitHub Actions demonstriert — von Linting und Tests bis zu Security-Scans und automatisierten Releases.",
+      en: "A Node.js service demonstrating a production-grade CI/CD pipeline with GitHub Actions — from linting and tests to security scans and automated releases.",
+    },
+    highlights: {
+      de: [
+        "Test-Matrix (Node 20/22/24) mit Coverage-Gate (≥ 80 %)",
+        "Security: CodeQL, Trivy-Image-Scan, npm audit und Dependabot",
+        "Multi-Stage Docker-Image, Push nach GHCR und semantische Releases",
+      ],
+      en: [
+        "Test matrix (Node 20/22/24) with a coverage gate (≥ 80%)",
+        "Security: CodeQL, Trivy image scan, npm audit and Dependabot",
+        "Multi-stage Docker image, publishing to GHCR and semantic releases",
+      ],
+    },
+    stack: ["GitHub Actions", "Docker", "Node.js", "CodeQL", "Trivy", "GHCR"],
+    githubUrl: "https://github.com/Mohammad-El-Zein/devops-pipelines",
   },
   {
     title: { de: "Blokus Brettspiel", en: "Blokus Board Game" },
@@ -239,11 +312,23 @@ export const skills: SkillGroup[] = [
   },
   {
     category: { de: "Frameworks", en: "Frameworks" },
-    items: ["React", "Spring Boot", "Next.js", "REST APIs"],
+    items: ["React", "Angular", "Next.js", "Spring Boot", "FastAPI", "REST APIs", "Tailwind CSS"],
   },
   {
-    category: { de: "DevOps", en: "DevOps" },
-    items: ["Git", "Docker", "Kubernetes", "Maven", "Gradle", "CI/CD", "Azure"],
+    category: { de: "Datenbanken", en: "Databases" },
+    items: ["PostgreSQL", "MongoDB", "SQLAlchemy", "Alembic"],
+  },
+  {
+    category: { de: "DevOps & CI/CD", en: "DevOps & CI/CD" },
+    items: ["Git", "GitHub Actions", "Docker", "Docker Compose", "Kubernetes", "Maven", "Gradle"],
+  },
+  {
+    category: { de: "Cloud", en: "Cloud" },
+    items: ["Azure", "Azure Container Apps", "Bicep (IaC)", "GHCR"],
+  },
+  {
+    category: { de: "KI", en: "AI" },
+    items: ["Anthropic API", "OpenAI API", "AI Automation"],
   },
 ];
 
@@ -256,5 +341,5 @@ export const languages: { name: Localized<string>; level: Localized<string> }[] 
 
 export const certifications: { name: string; status: Localized<string> }[] = [
   { name: "Microsoft Azure Fundamentals (AZ-900)", status: { de: "Zertifiziert", en: "Certified" } },
-  { name: "Microsoft Azure Administrator (AZ-204)", status: { de: "In Vorbereitung", en: "In progress" } },
+  { name: "Microsoft Azure Administrator (AZ-104)", status: { de: "In Vorbereitung", en: "In progress" } },
 ];

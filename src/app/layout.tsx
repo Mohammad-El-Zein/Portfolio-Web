@@ -19,11 +19,11 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: `${personal.name} — ${personal.role}`,
   description:
-    "Portfolio von Mohammad El Zein, Informatikstudent an der TU Dortmund — Software Engineering, DevOps und KI.",
+    "Portfolio von Mohammad El Zein, Informatik-Masterstudent an der TU Dortmund — Software Engineering, DevOps und KI.",
   openGraph: {
     title: `${personal.name} — ${personal.role}`,
     description:
-      "Portfolio von Mohammad El Zein, Informatikstudent an der TU Dortmund — Software Engineering, DevOps und KI.",
+      "Portfolio von Mohammad El Zein, Informatik-Masterstudent an der TU Dortmund — Software Engineering, DevOps und KI.",
     type: "website",
   },
 };

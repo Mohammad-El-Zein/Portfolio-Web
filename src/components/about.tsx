@@ -44,13 +44,21 @@ export function About() {
                 <GraduationCap size={18} />
                 <h3 className="font-semibold text-foreground">{t.educationHeading[lang]}</h3>
               </div>
-              <p className="font-medium text-foreground">{education.degree[lang]}</p>
-              <p className="text-sm text-muted-foreground">{education.school}</p>
-              <p className="mt-1 text-sm text-muted-foreground">{education.detail[lang]}</p>
-              <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-                <span className="font-medium text-foreground">{t.bachelorThesisLabel[lang]} </span>
-                {education.thesis[lang]}
-              </p>
+              <div className="space-y-5">
+                {education.map((item) => (
+                  <div key={item.degree.en}>
+                    <p className="font-medium text-foreground">{item.degree[lang]}</p>
+                    <p className="text-sm text-muted-foreground">{item.school}</p>
+                    <p className="mt-1 text-sm text-muted-foreground">{item.detail[lang]}</p>
+                    {item.thesis && (
+                      <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                        <span className="font-medium text-foreground">{t.bachelorThesisLabel[lang]} </span>
+                        {item.thesis[lang]}
+                      </p>
+                    )}
+                  </div>
+                ))}
+              </div>
 
               <div className="mt-6 flex items-center gap-2 text-accent">
                 <Award size={18} />
