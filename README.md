@@ -46,3 +46,8 @@ npm run build
 npm run start   # serve the production build locally
 ```
 
+
+## Deployment
+
+Every push to `main` is built and published to GitHub Pages (https://portfolio.elzein.dev)
+by `.github/workflows/deploy.yml`. It can also be started by hand from the Actions tab.
