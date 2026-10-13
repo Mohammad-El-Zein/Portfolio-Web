@@ -88,12 +88,12 @@ export const experience: ExperienceItem[] = [
     period: { de: "März 2026 – heute", en: "March 2026 – present" },
     bullets: {
       de: [
-        "JavaScript-Skripte für Siemens Polarion ALM entwickelt und gewartet",
+        "JavaScript-Skripte für Siemens Polarion ALM entwickelt und gewartet, die unternehmensweit von allen Nutzern des Systems verwendet werden",
         "KI-Automatisierung für interne Prozesse umgesetzt",
         "REST APIs und Dashboards für Engineering-Teams gebaut",
       ],
       en: [
-        "Developed and maintained JavaScript scripts for Siemens Polarion ALM",
+        "Developed and maintained JavaScript scripts for Siemens Polarion ALM, used company-wide by all users of the system",
         "Implemented AI automation for internal processes",
         "Built REST APIs and dashboards for engineering teams",
       ],
@@ -212,6 +212,7 @@ export const projects: Project[] = [
     stack: ["Python", "FastAPI", "Angular", "TypeScript", "PostgreSQL", "Docker", "Azure", "GitHub Actions", "Anthropic API"],
     liveUrl: "https://lifedash.elzein.dev",
     featured: true,
+    image: `${BASE_PATH}/images/projects/lifedash.webp`,
     githubUrl: "https://github.com/Mohammad-El-Zein/lifedash",
   },
   {
@@ -234,6 +235,7 @@ export const projects: Project[] = [
     },
     stack: ["React", "Spring Boot", "MongoDB", "Stripe", "OpenAI API", "Java", "JavaScript"],
     liveUrl: "https://flavorhaus.elzein.dev",
+    image: `${BASE_PATH}/images/projects/flavorhaus.webp`,
   },
   {
     title: { de: "Deployment Analyzer", en: "Deployment Analyzer" },

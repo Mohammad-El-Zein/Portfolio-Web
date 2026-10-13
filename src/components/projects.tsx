@@ -51,7 +51,7 @@ function FeaturedCard({ project }: { project: Project }) {
       <div
         className={cn(
           "relative flex h-full flex-col gap-6 rounded-2xl bg-surface p-6 sm:p-8",
-          project.image && "md:grid md:grid-cols-2 md:items-center",
+          project.image && "lg:grid lg:grid-cols-[minmax(0,5fr)_minmax(0,6fr)] lg:items-center lg:gap-10",
         )}
       >
         <div className="flex flex-col">
@@ -61,18 +61,18 @@ function FeaturedCard({ project }: { project: Project }) {
           </span>
           <ProjectBody project={project} large />
         </div>
-        {project.image && <ProjectImage project={project} />}
+        {project.image && <ProjectImage project={project} className="mb-0" />}
       </div>
     </div>
   );
 }
 
-function ProjectImage({ project }: { project: Project }) {
+function ProjectImage({ project, className }: { project: Project; className?: string }) {
   const { lang } = useLanguage();
   if (!project.image) return null;
 
   return (
-    <div className="mb-5 overflow-hidden rounded-lg border border-border">
+    <div className={cn("mb-5 overflow-hidden rounded-lg border border-border shadow-lg", className)}>
       {/* eslint-disable-next-line @next/next/no-img-element -- static export, images are unoptimized anyway */}
       <img
         src={project.image}
