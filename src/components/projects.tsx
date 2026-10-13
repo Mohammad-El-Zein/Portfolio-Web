@@ -11,7 +11,8 @@ import { cn } from "@/lib/utils";
 
 export function Projects() {
   const { lang } = useLanguage();
-  const ordered = [...projects.filter((p) => p.featured), ...projects.filter((p) => !p.featured)];
+  const featured = projects.filter((p) => p.featured);
+  const others = projects.filter((p) => !p.featured);
 
   return (
     <section id="projects" className="border-b border-border">
@@ -20,21 +21,22 @@ export function Projects() {
           <SectionHeading index="03" title={translations.sectionTitles.projects[lang]} />
         </Reveal>
 
-        <div className="grid gap-6 md:grid-cols-2">
-          {ordered.map((project, i) => (
-            <Reveal
-              key={project.title.de}
-              delay={i * 0.08}
-              className={cn("h-full", project.featured && "md:col-span-2")}
-            >
-              {project.featured ? (
-                <FeaturedCard project={project} />
-              ) : (
-                <TiltCard className="group flex h-full flex-col rounded-xl border border-border bg-surface p-6 transition-[border-color,box-shadow] duration-300 ease-out hover:border-accent hover:shadow-[0_20px_50px_-15px_var(--accent-soft)]">
-                  <ProjectImage project={project} />
-                  <ProjectBody project={project} />
-                </TiltCard>
-              )}
+        <div className="space-y-8">
+          {featured.map((project, i) => (
+            <Reveal key={project.title.de} delay={i * 0.08}>
+              {/* Alternate the screenshot side so stacked featured cards don't look repetitive. */}
+              <FeaturedCard project={project} reversed={i % 2 === 1} />
+            </Reveal>
+          ))}
+        </div>
+
+        <div className="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {others.map((project, i) => (
+            <Reveal key={project.title.de} delay={i * 0.08} className="h-full">
+              <TiltCard className="group flex h-full flex-col rounded-xl border border-border bg-surface p-6 transition-[border-color,box-shadow] duration-300 ease-out hover:border-accent hover:shadow-[0_20px_50px_-15px_var(--accent-soft)]">
+                <ProjectImage project={project} />
+                <ProjectBody project={project} />
+              </TiltCard>
             </Reveal>
           ))}
         </div>
@@ -43,7 +45,7 @@ export function Projects() {
   );
 }
 
-function FeaturedCard({ project }: { project: Project }) {
+function FeaturedCard({ project, reversed = false }: { project: Project; reversed?: boolean }) {
   const { lang } = useLanguage();
 
   return (
@@ -51,10 +53,14 @@ function FeaturedCard({ project }: { project: Project }) {
       <div
         className={cn(
           "relative flex h-full flex-col gap-6 rounded-2xl bg-surface p-6 sm:p-8",
-          project.image && "lg:grid lg:grid-cols-[minmax(0,5fr)_minmax(0,6fr)] lg:items-center lg:gap-10",
+          project.image && "lg:grid lg:items-center lg:gap-10",
+          project.image &&
+            (reversed
+              ? "lg:grid-cols-[minmax(0,6fr)_minmax(0,5fr)]"
+              : "lg:grid-cols-[minmax(0,5fr)_minmax(0,6fr)]"),
         )}
       >
-        <div className="flex flex-col">
+        <div className={cn("flex flex-col", reversed && "lg:order-2")}>
           <span className="font-mono-accent mb-3 inline-flex w-fit items-center gap-1.5 rounded-full border border-accent/40 bg-accent-soft px-3 py-1 text-xs text-accent">
             <Star size={12} className="fill-current" />
             {translations.projects.featured[lang]}
